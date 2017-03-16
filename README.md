@@ -2,6 +2,8 @@
 
 BotMaia is a Portuguese translation for the popular Multipurpose-Twitch-Chat-Bot [PhantomBot](http://phantombot.tv) with a custom website to host the channels the bot is moderating and commands.
 
+------------
+
 ## Contributing
 
 1. Fork it!
