@@ -20,7 +20,7 @@ BotMaia is a Portuguese translation for the popular Multipurpose-Twitch-Chat-Bot
     * Created a commands page to host the bot commands
     * Added more functionality to the commands table
     
-Projects:
+## Projects:
 
 - [ ] Add functionalities and enhance table.
 - [ ] Add live viewers counter to the channels.
@@ -29,4 +29,5 @@ Projects:
 
 ------------
 
-[botmaia.tk](http://www.botmaia.tk/) 
+##### [botmaia.tk](http://www.botmaia.tk/) © Bruno Maia 2017.
+###### Special thanks to [naccib](http://github.com/naccib)
