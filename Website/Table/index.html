@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>botmaia comandos</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.9/semantic.min.css" />
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/css/bootstrap.no-icons.min.css" />
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/2.0/css/font-awesome.css" />
+    <script src="https://cdn.jsdelivr.net/semantic-ui/2.2.9/semantic.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <script src="app.js"></script>
+</head>
+
+<body ng-app="myModule">
+
+    <div class="ui segment">
+
+        <h2 class="ui center aligned header">Comandos</h2>
+
+        <div ng-controller="ctrlRead">
+
+            <form>
+                <div class="ui right aligned">
+                    <div class="ui right aligned transparent icon input">
+                        <input type="text" class="form-control" placeholder="Procurar comandos" ng-model="searchItems">
+                        <i class="search icon"></i>
+                    </div>
+                </div>
+            </form>
+
+            <table class="table table-striped table-condensed table-hover" id="comandos">
+                <thead>
+
+                    <tr>
+                        <th class="id" custom-sort order="'id'" sort="sort">Id&nbsp;</th>
+                        <th class="name" custom-sort order="'name'" sort="sort">Comando&nbsp;</th>
+                        <th class="uso" custom-sort order="'uso'" sort="sort">Uso&nbsp;</th>
+                        <th class="desc" custom-sort order="'description'" sort="sort">Descrição&nbsp;</th>
+                        <th class="nivel">Nível de uso&nbsp;</th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <td colspan="6">
+                        <div class="pagination pull-right">
+                            <ul>
+                                <li ng-class="{disabled: currentPage == 0}">
+                                    <a href ng-click="prevPage()">« Prev</a>
+                                </li>
+
+                                <li ng-repeat="n in range(pagedItems.length, currentPage, currentPage + gap) " ng-class="{active: n == currentPage}" ng-click="setPage()">
+                                    <a href ng-bind="n + 1">1</a>
+                                </li>
+
+                                <li ng-class="{disabled: (currentPage) == pagedItems.length - 1}">
+                                    <a href ng-click="nextPage()">›</a>
+                                </li>
+                                <li ng-class="{disabled: (currentPage) == pagedItems.length - 1}" ng-show="pagedItems.length > 5" ng-click="setPage(pagedItems.length-1)">
+                                    <a href>»</a>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </td>
+                </tfoot>
+                <tbody>
+                    <tr ng-repeat="item in pagedItems[currentPage] | orderBy:sort.sortingOrder:sort.reverse | filter:searchItems">
+                        <td>{{$index+1}}</td>
+                        <td>{{item.name}}</td>
+                        <td>{{item.uso}}</td>
+                        <td>{{item.desc}}</td>
+                        <td>{{item.nivel}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+
+</html>
