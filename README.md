@@ -25,7 +25,7 @@ BotMaia is a Portuguese translation for the popular Multipurpose-Twitch-Chat-Bot
 ## Projects:
 
 - [ ] Add functionalities and enhance table.
-- [ ] Add live viewers counter to the channels.
+- [X] Add live viewers counter to the channels.
 - [ ] Multi-Chat moderation.
 - [ ] Complete translate the bot to Protuguese.
 
