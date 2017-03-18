@@ -1,0 +1,126 @@
+<!doctype html>
+
+<html>
+
+<head>
+    <title>botmaia comandos</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1.0">
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.9/semantic.min.css" />
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/css/bootstrap.no-icons.min.css" />
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/2.0/css/font-awesome.css" />
+    <link href="https://fonts.googleapis.com/css?family=Lato|Roboto|Ubuntu" rel="stylesheet">
+    <link rel="stylesheet" href="css/link_transitions.css" />
+    <link rel="stylesheet" href="css/site.css" />
+    <script src="https://cdn.jsdelivr.net/semantic-ui/2.2.9/semantic.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <script src="table.js"></script>
+</head>
+
+<body ng-app="myModule" class="Site">
+    
+    <main class="Site-content">
+
+        <div class="ui inverted menu">
+            <nav class="cl-effect-17" id="cl-effect-17">
+                <a href="index.html" data-hover="BotMaia" style="text-decoration:none">BotMaia</a>
+                <a href="#" data-hover="Comandos" style="text-decoration:none">Comandos</a>
+
+                <!--<div class="right menu">
+            <button class="ui disabled button">Painel</button>
+        </div>-->
+            </nav>
+        </div>
+
+        <div class="ui center aligned container center">
+            <h1>BotMaia</h1>
+            <h4 class="ui dividing header">botmaia is a custom built bot from <a href="http://phantombot.tv">PhantomBot</a>.</h4>
+        </div>
+
+        <div class="ui center aligned basic segment">
+            <p>
+                <a href="http://twitch.tv/BGMaia"><i class="icon twitch black"></i>bgmaia</a>
+                <a href="https://github.com/MaiaEdits"><i class="icon github black"></i>maiaedits</a>
+                <a href="https://twitter.com/MaiaEdits"><i class="icon twitter black"></i>maiaedits</a>
+            </p>
+            <p>You can contact me through any of the links above.</p>
+            <p>You can find this bot in the following channels:</p>
+        </div>
+
+        <div class="ui segment">
+
+            <h2 class="ui center aligned header">Comandos</h2>
+
+            <div ng-controller="ctrlRead">
+
+                <form>
+                    <div class="ui right aligned">
+                        <div class="ui right aligned transparent icon input">
+                            <input type="text" class="form-control" placeholder="Procurar comandos" ng-model="searchItems">
+                            <i class="search icon"></i>
+                        </div>
+                    </div>
+                </form>
+
+                <table class="table table-striped table-condensed table-hover" id="comandos">
+                    <thead>
+
+                        <tr>
+                            <th class="id" custom-sort order="'id'" sort="sort">Id&nbsp;</th>
+                            <th class="name" custom-sort order="'name'" sort="sort">Comando&nbsp;</th>
+                            <th class="uso" custom-sort order="'uso'" sort="sort">Uso&nbsp;</th>
+                            <th class="desc" custom-sort order="'description'" sort="sort">Descrição&nbsp;</th>
+                            <th class="nivel">Nível de uso&nbsp;</th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <td colspan="6">
+                            <div class="pagination pull-right">
+                                <ul>
+                                    <li ng-class="{disabled: currentPage == 0}">
+                                        <a href ng-click="prevPage()">« Prev</a>
+                                    </li>
+
+                                    <li ng-repeat="n in range(pagedItems.length, currentPage, currentPage + gap) " ng-class="{active: n == currentPage}" ng-click="setPage()">
+                                        <a href ng-bind="n + 1">1</a>
+                                    </li>
+
+                                    <li ng-class="{disabled: (currentPage) == pagedItems.length - 1}">
+                                        <a href ng-click="nextPage()">›</a>
+                                    </li>
+                                    <li ng-class="{disabled: (currentPage) == pagedItems.length - 1}" ng-show="pagedItems.length > 5" ng-click="setPage(pagedItems.length-1)">
+                                        <a href>»</a>
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </td>
+                    </tfoot>
+                    <tbody>
+                        <tr ng-repeat="item in pagedItems[currentPage] | orderBy:sort.sortingOrder:sort.reverse | filter:searchItems">
+                            <td>{{item.id}}</td>
+                            <td>{{item.name}}</td>
+                            <td>{{item.uso}}</td>
+                            <td>{{item.desc}}</td>
+                            <td>{{item.nivel}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </main>
+
+    <footer>
+        <div class="ui inverted vertical footer segment form-page">
+            <div class="ui center aligned container"> &copy; Bruno Maia 2017. All Rights Reserved</div>
+            <div class="ui center aligned container">
+                <p style="font-size: 12px; color: grey;">Special thanks to <a href="http://naccib.github.io" target="_blank">naccib</a></p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>

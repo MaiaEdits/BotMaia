@@ -25,7 +25,7 @@
         <div class="ui inverted menu">
             <nav class="cl-effect-17" id="cl-effect-17">
                 <a href="#" data-hover="BotMaia" style="text-decoration:none; font-family: 'Lato', sans-serif;">BotMaia</a>
-                <a href="comandos.html" data-hover="Comandos" style="text-decoration:none">Comandos</a>
+                <a href="commands.html" data-hover="Comandos" style="text-decoration:none">Comandos</a>
 
                 <!--<div class="right menu">
             <button class="ui disabled button">Painel</button>
@@ -40,9 +40,9 @@
 
         <div class="ui center aligned basic segment">
             <p>
-                <a href="http://twitch.tv/BGMaia"><i class="icon twitch black"></i>bgmaia</a>
-                <a href="https://github.com/MaiaEdits"><i class="icon github black"></i>maiaedits</a>
-                <a href="https://twitter.com/MaiaEdits"><i class="icon twitter black"></i>maiaedits</a>
+                <a href="http://twitch.tv/BGMaia" style="text-decoration:none;"><i class="icon twitch black"></i>bgmaia</a>
+                <a href="https://github.com/MaiaEdits" style="text-decoration:none;"><i class="icon github black"></i>maiaedits</a>
+                <a href="https://twitter.com/MaiaEdits" style="text-decoration:none;"><i class="icon twitter black"></i>maiaedits</a>
             </p>
             <p>You can contact me through any of the links above.</p>
             <p>You can find this bot in the following channels:</p>
@@ -53,8 +53,22 @@
                 <div class="column pbot">
                     <h2 class="ui large header">botmaia</h2>
                     <div>
-                        <i class="icon twitch green"></i> <a href="http://twitch.tv/weaerbrazilians">wearebrazilians</a>
-                        <!--<span class="num">26k</span> viewers-->
+                        <i class="icon twitch green"></i><a href="http://twitch.tv/weaerbrazilians">wearebrazilians</a>
+                        <p id="live"></p>
+                        <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+                        <script>
+                            $.ajax({
+                                url: 'https://api.twitch.tv/kraken/streams/wearebrazilians?client_id=xym2y6zh8qkdl7f6n1qjz7xlwcut92',
+                                dataType: 'json',
+                                success: function(stream) {
+                                    document.getElementById("live").innerHTML = stream ? "Currently live with ".concat(parseInt(stream.stream.viewers), " viewers.") : "Stream is offline.";
+                                },
+                                error: function() {
+                                    document.getElementById("live").innerHTML = "Could not get stream information..";
+                                }
+                            });
+
+                        </script>
                     </div>
                     <!--
             <div><i class="icon star"></i> <a href="https://imaqtpie.pajbot.com">imaqtpie.pajbot.com</a></div>
@@ -69,7 +83,7 @@
         <div class="ui inverted vertical footer segment form-page">
             <div class="ui center aligned container"> &copy; Bruno Maia 2017. All Rights Reserved</div>
             <div class="ui center aligned container">
-            <p style="font-size: 12px; color: grey;">Special thanks to <a href="http://naccib.github.io" target="_blank">naccib</a></p>
+                <p style="font-size: 12px; color: grey;">Special thanks to <a href="http://naccib.github.io" target="_blank">naccib</a></p>
             </div>
         </div>
     </footer>
